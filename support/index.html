@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support & Help Center | TinniAura</title>
+    <link rel="icon" type="image/png" href="../assets/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f7f6f1;
+            --surface: #ffffff;
+            --surface-border: rgba(0, 0, 0, 0.08);
+            --accent-green: #15803d;
+            --accent-emerald: #059669;
+            --text-heading: #121417;
+            --text-body: #4a515c;
+            --text-muted: #737c8b;
+            --btn-dark: #0f131a;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg);
+            color: var(--text-body);
+            font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+            line-height: 1.7;
+            padding: 0 24px 80px;
+        }
+
+        .container { max-width: 860px; margin: 0 auto; }
+
+        header {
+            padding: 36px 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--surface-border);
+            margin-bottom: 40px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-heading);
+            font-weight: 800;
+            font-size: 18px;
+        }
+
+        .brand img {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--accent-emerald); }
+
+        h1 {
+            font-family: 'Newsreader', Georgia, serif;
+            font-size: 42px;
+            font-weight: 600;
+            color: var(--text-heading);
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: var(--text-muted);
+            margin-bottom: 36px;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--surface-border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.02);
+        }
+
+        .contact-box {
+            background: #ffffff;
+            border: 1.5px solid var(--accent-emerald);
+            border-radius: 20px;
+            padding: 36px 28px;
+            text-align: center;
+            margin-bottom: 48px;
+            box-shadow: 0 10px 30px rgba(5, 150, 105, 0.08);
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background: var(--btn-dark);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 15px;
+            padding: 13px 26px;
+            border-radius: 25px;
+            text-decoration: none;
+            margin-top: 16px;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            background: #1e2634;
+        }
+
+        h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 40px 0 20px;
+            color: var(--text-heading);
+        }
+
+        .faq-item h3 {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-bottom: 6px;
+        }
+
+        .faq-item p {
+            color: var(--text-body);
+            font-size: 15px;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding-top: 24px;
+            border-top: 1px solid var(--surface-border);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="../index.html" class="brand">
+                <img src="assets/logo.png" alt="TinniAura Logo">
+                <span>TinniAura</span>
+            </a>
+            <nav class="nav-links">
+                <a href="../index.html">Overview</a>
+                <a href="../privacy/">Privacy</a>
+                <a href="../terms/">Terms</a>
+            </nav>
+        </header>
+
+        <h1>Support & Help Center</h1>
+        <p class="subtitle">Have questions or need assistance with your acoustic soundscapes? We're here to help.</p>
+
+        <div class="contact-box">
+            <h2 style="margin: 0 0 10px; font-size: 24px; color: var(--text-heading);">Need Help or Found an Audio Issue?</h2>
+            <p style="color: var(--text-body); max-width: 500px; margin: 0 auto;">Our audio engineering team answers all inquiries within 24–48 hours.</p>
+            <a href="mailto:support@tinniaura.com" class="contact-btn">Email: support@tinniaura.com</a>
+        </div>
+
+        <h2 id="faq">Frequently Asked Questions</h2>
+
+        <div class="card faq-item">
+            <h3>How do I restore my lifetime purchase on a new iPhone or iPad?</h3>
+            <p>Open TinniAura, tap <strong>Settings</strong> (or tap the <strong>PRO</strong> button in the header), and tap <strong>Restore Purchases</strong>. Your purchase will automatically sync with Apple's App Store servers with zero charge.</p>
+        </div>
+
+        <div class="card faq-item">
+            <h3>Are there any recurring subscriptions or hidden monthly fees?</h3>
+            <p><strong>No.</strong> TinniAura is strictly Pay Once, Keep Forever. One purchase unlocks all Pro soundscapes, notched filtering, independent dual-ear matching, and future sound updates permanently.</p>
+        </div>
+
+        <div class="card faq-item">
+            <h3>Does acoustic masking play while my screen is locked or in the background?</h3>
+            <p>Yes! TinniAura integrates with iOS background audio and the Lock Screen Now Playing center. You can close the app or lock your iPhone, and your sleep timer will continue to fade out smoothly.</p>
+        </div>
+
+        <div class="card faq-item">
+            <h3>How do I safely match my ringing pitch with the shuttle wheel?</h3>
+            <p>Put on wired or Bluetooth headphones in a quiet room. Select the Sine tone, gently rotate the Spring Shuttle Wheel until the pitch matches the center pitch of your ear ringing, and adjust volume so the tone sits at or slightly below your tinnitus level.</p>
+        </div>
+
+        <div class="card faq-item">
+            <h3>How does Apple HealthKit integration work?</h3>
+            <p>TinniAura can import hearing threshold levels from clinical audiograms stored in Apple Health to apply Equal Loudness calibration, keeping high frequencies smooth and soothing.</p>
+        </div>
+
+        <footer>
+            &copy; 2026 TinniAura. All rights reserved.
+        </footer>
+    </div>
+</body>
+</html>
