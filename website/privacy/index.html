@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | TinniAura</title>
+    <link rel="icon" type="image/png" href="../assets/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f7f6f1;
+            --surface: #ffffff;
+            --surface-border: rgba(0, 0, 0, 0.08);
+            --accent-green: #15803d;
+            --accent-emerald: #059669;
+            --text-heading: #121417;
+            --text-body: #4a515c;
+            --text-muted: #737c8b;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg);
+            color: var(--text-body);
+            font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+            line-height: 1.7;
+            padding: 0 24px 80px;
+        }
+
+        .container { max-width: 860px; margin: 0 auto; }
+
+        header {
+            padding: 36px 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--surface-border);
+            margin-bottom: 40px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-heading);
+            font-weight: 800;
+            font-size: 18px;
+        }
+
+        .brand img {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--accent-emerald); }
+
+        h1 {
+            font-family: 'Newsreader', Georgia, serif;
+            font-size: 42px;
+            font-weight: 600;
+            color: var(--text-heading);
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+        }
+
+        .effective-date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+        }
+
+        .highlight-card {
+            background: #ffffff;
+            border: 1px solid rgba(5, 150, 105, 0.3);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 40px;
+        }
+
+        .highlight-card h3 {
+            color: var(--accent-emerald);
+            font-size: 17px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        h2 {
+            font-size: 21px;
+            font-weight: 700;
+            margin: 36px 0 14px;
+            color: var(--text-heading);
+            border-left: 3px solid var(--accent-emerald);
+            padding-left: 12px;
+        }
+
+        p { color: var(--text-body); margin-bottom: 16px; font-size: 15.5px; }
+        ul { color: var(--text-body); margin-left: 24px; margin-bottom: 20px; }
+        li { margin-bottom: 8px; }
+        strong { color: var(--text-heading); }
+
+        footer {
+            margin-top: 60px;
+            padding-top: 24px;
+            border-top: 1px solid var(--surface-border);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="../index.html" class="brand">
+                <img src="assets/logo.png" alt="TinniAura Logo">
+                <span>TinniAura</span>
+            </a>
+            <nav class="nav-links">
+                <a href="../index.html">Overview</a>
+                <a href="../terms/">Terms</a>
+                <a href="../support/">Support</a>
+            </nav>
+        </header>
+
+        <h1>Privacy Policy</h1>
+        <div class="effective-date">Last Updated: November 2026</div>
+
+        <div class="highlight-card">
+            <h3>🔒 Complete On-Device Privacy Guarantee</h3>
+            <p style="margin-bottom: 0;">
+                TinniAura is engineered from the ground up to operate completely on your device. 
+                We do not collect, transmit, store on external servers, or sell your personal, biometric, audiogram, or sound therapy listening history to third parties.
+            </p>
+        </div>
+
+        <h2>1. Apple HealthKit & Audiology Data (Strict Apple Guideline 5.1 Compliance)</h2>
+        <p>TinniAura offers optional integration with Apple HealthKit to calibrate sound therapy gain curves against your clinical audiograms and record completed therapy sessions as Mindful Minutes.</p>
+        <ul>
+            <li><strong>Audiogram Data:</strong> When permission is granted, TinniAura reads your audiogram hearing threshold points locally to calculate loudness compensation. This data never leaves your device.</li>
+            <li><strong>Mindful Sessions:</strong> Completed sound masking sessions can be written to Apple Health as Mindful Minutes at your discretion.</li>
+            <li><strong>Zero Third-Party Sharing:</strong> In accordance with Apple App Store Review Guidelines, HealthKit data is <strong>never</strong> shared with third-party tracking services, advertising platforms, or data brokers.</li>
+        </ul>
+
+        <h2>2. Anonymous Usage & Telemetry</h2>
+        <p>We do not use third-party analytics SDKs. TinniAura uses a minimal, privacy-first local telemetry mechanism solely to detect audio crashes or decibel safety limit triggers on device.</p>
+
+        <h2>3. In-App Purchases & Apple ID</h2>
+        <p>Transactions for TinniAura Pro (Once-Off Lifetime Unlock) are handled exclusively by Apple's StoreKit 2 framework. TinniAura never collects, accesses, or stores your credit card details, billing address, or payment credentials.</p>
+
+        <h2>4. Diagnostic Doctor PDF Reports</h2>
+        <p>When you export a clinical summary report for your ENT or audiologist containing your Tinnitus Handicap Inventory (THI) or Tinnitus Functional Index (TFI) scores, the PDF is generated 100% locally on your iOS device via CoreGraphics. You choose where to share, airDrop, or print the document.</p>
+
+        <h2>5. Contact Us</h2>
+        <p>If you have any questions or concerns regarding our privacy practices, please contact us at:</p>
+        <p><strong>Email:</strong> <a href="mailto:support@tinniaura.com" style="color: var(--accent-emerald); font-weight: 600; text-decoration: none;">support@tinniaura.com</a></p>
+
+        <footer>
+            &copy; 2026 TinniAura. Built for acoustic relief and wellness. All rights reserved.
+        </footer>
+    </div>
+</body>
+</html>
