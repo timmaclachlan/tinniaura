@@ -10,35 +10,55 @@
     <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #f7f6f1;
-            --surface: #ffffff;
-            --surface-border: rgba(0, 0, 0, 0.08);
-            --accent-green: #15803d;
-            --accent-emerald: #059669;
-            --accent-amber: #b45309;
-            --text-heading: #121417;
-            --text-body: #4a515c;
-            --text-muted: #737c8b;
+            --bg-deep: #080a0f;
+            --bg-elevated: #0f141e;
+            --bg-card: #141a27;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(34, 211, 238, 0.35);
+            --text-heading: #f8fafc;
+            --text-body: #94a3b8;
+            --text-muted: #64748b;
+            --accent-cyan: #22d3ee;
+            --accent-amber: #f59e0b;
+            --shadow-card: 0 16px 36px rgba(0, 0, 0, 0.5);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        
         body {
-            background-color: var(--bg);
+            background-color: var(--bg-deep);
             color: var(--text-body);
-            font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.7;
             padding: 0 24px 80px;
+            -webkit-font-smoothing: antialiased;
         }
 
         .container { max-width: 860px; margin: 0 auto; }
 
-        header {
-            padding: 36px 0 24px;
+        .nav-wrapper {
+            padding: 24px 0 36px;
+            display: flex;
+            justify-content: center;
+            position: sticky;
+            top: 16px;
+            z-index: 100;
+        }
+
+        .nav-pill {
+            background: rgba(15, 20, 30, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 40px;
+            padding: 8px 16px 8px 18px;
             display: flex;
             align-items: center;
+            gap: 24px;
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6);
+            width: 100%;
+            max-width: 720px;
             justify-content: space-between;
-            border-bottom: 1px solid var(--surface-border);
-            margin-bottom: 40px;
         }
 
         .brand {
@@ -48,134 +68,151 @@
             text-decoration: none;
             color: var(--text-heading);
             font-weight: 800;
-            font-size: 18px;
+            font-size: 17px;
+            letter-spacing: -0.3px;
         }
 
         .brand img {
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             border-radius: 8px;
         }
 
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
         .nav-links a {
-            color: var(--text-muted);
+            color: var(--text-body);
             text-decoration: none;
-            margin-left: 20px;
             font-size: 14px;
             font-weight: 600;
             transition: color 0.2s;
         }
 
-        .nav-links a:hover { color: var(--accent-emerald); }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent-cyan); }
 
         h1 {
             font-family: 'Newsreader', Georgia, serif;
-            font-size: 42px;
+            font-size: clamp(36px, 5vw, 46px);
             font-weight: 600;
             color: var(--text-heading);
             margin-bottom: 8px;
             letter-spacing: -1px;
         }
 
-        .effective-date {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 13px;
+        .subtitle {
+            font-size: 15px;
             color: var(--text-muted);
+            margin-bottom: 36px;
+        }
+
+        .disclaimer-banner {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.35);
+            border-radius: 20px;
+            padding: 24px 28px;
             margin-bottom: 32px;
         }
 
-        .medical-disclaimer-box {
-            background: #fffbeb;
-            border: 1.5px solid rgba(217, 119, 6, 0.4);
-            border-radius: 16px;
-            padding: 24px;
-            margin-bottom: 40px;
-        }
-
-        .medical-disclaimer-box h3 {
+        .disclaimer-banner h2 {
             color: var(--accent-amber);
-            font-size: 17px;
-            margin-bottom: 8px;
-            font-weight: 800;
+            font-size: 18px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        h2 {
-            font-size: 21px;
-            font-weight: 700;
-            margin: 36px 0 14px;
-            color: var(--text-heading);
-            border-left: 3px solid var(--accent-emerald);
-            padding-left: 12px;
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-card);
         }
 
-        p { color: var(--text-body); margin-bottom: 16px; font-size: 15.5px; }
-        ul { color: var(--text-body); margin-left: 24px; margin-bottom: 20px; }
-        li { margin-bottom: 8px; }
-        strong { color: var(--text-heading); }
+        h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-bottom: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        p, li {
+            color: var(--text-body);
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        ul {
+            padding-left: 20px;
+            margin-bottom: 14px;
+        }
+
+        strong { color: #f1f5f9; }
 
         footer {
             margin-top: 60px;
-            padding-top: 24px;
-            border-top: 1px solid var(--surface-border);
+            padding-top: 28px;
+            border-top: 1px solid var(--border);
             text-align: center;
-            color: var(--text-muted);
             font-size: 13px;
+            color: var(--text-muted);
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <a href="../index.html" class="brand">
-                <img src="assets/logo.png" alt="TinniAura Logo">
-                <span>TinniAura</span>
-            </a>
-            <nav class="nav-links">
-                <a href="../index.html">Overview</a>
-                <a href="../privacy/">Privacy</a>
-                <a href="../support/">Support</a>
+        <div class="nav-wrapper">
+            <nav class="nav-pill">
+                <a href="../index.html" class="brand">
+                    <img src="../assets/logo.png" alt="TinniAura Logo">
+                    <span>TinniAura</span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">Overview</a>
+                    <a href="../support/">Support</a>
+                    <a href="../privacy/">Privacy</a>
+                    <a href="../terms/" class="active">Terms</a>
+                </div>
             </nav>
-        </header>
-
-        <h1>Terms of Use & Medical Disclaimer</h1>
-        <div class="effective-date">Last Updated: November 2026</div>
-
-        <div class="medical-disclaimer-box" id="disclaimer">
-            <h3>⚠️ MANDATORY CLINICAL & MEDICAL DISCLAIMER</h3>
-            <p style="color: #92400e; margin-bottom: 0; font-size: 15px; font-weight: 500;">
-                TinniAura is an acoustic wellness and sound masking application intended for relaxation, stress reduction, and acoustic habituation. 
-                <strong>TinniAura is not a medical device, diagnostic tool, or a cure for tinnitus or hearing disorders.</strong> 
-                It is not cleared or evaluated by the FDA or any medical authority. Always consult a licensed ENT physician or audiologist to diagnose the root cause of your tinnitus before beginning acoustic masking therapy. Never disregard professional medical advice.
-            </p>
         </div>
 
-        <h2>1. Acceptance of Terms</h2>
-        <p>By downloading, installing, or using the TinniAura application or this website, you agree to be bound by these Terms of Use and the Apple Standard End User License Agreement (EULA). If you disagree with any portion of these terms, please discontinue use of the application.</p>
+        <h1>Terms of Use &amp; Medical Disclaimer</h1>
+        <p class="subtitle">Effective Date: November 18, 2026 &bull; Apple App Store Guideline 1.4 Compliance</p>
 
-        <h2>2. Safe Listening Practices & Decibel Limits</h2>
-        <p>Acoustic sound therapy should always be conducted at safe, comfortable listening levels:</p>
-        <ul>
-            <li>Never set masking audio louder than your perceived tinnitus sound. Sound therapy is designed to mix gently with your ringing, not drown it out at harmful decibels.</li>
-            <li>TinniAura incorporates an algorithmic 85 dB Hearing Safety Limiter. However, you remain responsible for your device volume output and protecting your auditory health.</li>
-            <li>If you experience ear pain, fullness, dizziness, or hyperacusis spikes, stop playback immediately and consult an ear specialist.</li>
-        </ul>
+        <div class="disclaimer-banner" id="disclaimer">
+            <h2>⚠️ Important Medical Disclaimer</h2>
+            <p><strong>TinniAura is not a medical device and is not intended to diagnose, treat, cure, or prevent any disease or medical condition.</strong> TinniAura provides acoustic sound masking, relaxation soundscapes, and pitch-matching tools designed to assist in sound habituation.</p>
+            <p>If you experience sudden hearing loss, pulsating tinnitus, dizziness, ear pain, or sudden change in your hearing, seek immediate evaluation from an Ear, Nose &amp; Throat (ENT) specialist or certified audiologist.</p>
+        </div>
 
-        <h2>3. Purchases: Pay Once, Keep Forever (Lifetime License)</h2>
-        <p>TinniAura Pro is sold as a <strong>Once-Off Lifetime Purchase</strong> through Apple App Store In-App Purchases.</p>
-        <ul>
-            <li><strong>No Recurring Subscriptions:</strong> You are charged once at the time of purchase. There are no monthly or annual rebills.</li>
-            <li><strong>Family Sharing:</strong> Subject to Apple's policies, your lifetime purchase can be restored on all devices linked to your primary Apple ID.</li>
-            <li><strong>Refunds:</strong> All purchases and refunds are processed according to Apple Media Services Terms and Conditions.</li>
-        </ul>
+        <div class="card">
+            <h2>1. Safe Listening Guidelines</h2>
+            <p>To protect your hearing, TinniAura incorporates an internal 85 dB safety limiter. However, prolonged exposure to high-volume sound through headphones can cause permanent hearing damage. We strongly recommend:</p>
+            <ul>
+                <li>Listening at the lowest volume level that provides comfortable habituation relief.</li>
+                <li>Never turning up masking sounds to fully drown out loud ambient environments.</li>
+                <li>Taking regular listening breaks during prolonged sessions.</li>
+            </ul>
+        </div>
 
-        <h2>4. Clinical Questionnaires (THI & TFI)</h2>
-        <p>The Tinnitus Handicap Inventory (THI) and Tinnitus Functional Index (TFI) assessments provided within the app are validated screening questionnaires provided for self-monitoring and sharing with your healthcare provider. They do not constitute a formal medical diagnosis.</p>
+        <div class="card">
+            <h2>2. Pay Once, Keep Forever License</h2>
+            <p>TinniAura Pro is offered as a single, one-time lifetime unlock ($19.99). There are zero recurring monthly or annual subscription fees. Your license allows you to download and use TinniAura on any compatible iOS or iPadOS device associated with your Apple ID.</p>
+        </div>
 
-        <h2>5. Limitation of Liability</h2>
-        <p>Under no circumstances shall the developers of TinniAura be liable for any direct, indirect, incidental, or consequential damages resulting from the use or inability to use the audio generators, filters, or exported reports.</p>
+        <div class="card">
+            <h2>3. Contact Information</h2>
+            <p>For questions or assistance regarding these terms, please contact us at:</p>
+            <p><strong>Email:</strong> <a href="mailto:edit43_design@icloud.com" style="color: var(--accent-cyan); text-decoration: none; font-weight: 600;">edit43_design@icloud.com</a></p>
+        </div>
 
         <footer>
             &copy; 2026 TinniAura. All rights reserved.

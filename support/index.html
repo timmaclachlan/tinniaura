@@ -10,35 +10,79 @@
     <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #f7f6f1;
-            --surface: #ffffff;
-            --surface-border: rgba(0, 0, 0, 0.08);
-            --accent-green: #15803d;
-            --accent-emerald: #059669;
-            --text-heading: #121417;
-            --text-body: #4a515c;
-            --text-muted: #737c8b;
-            --btn-dark: #0f131a;
+            --bg-deep: #080a0f;
+            --bg-elevated: #0f141e;
+            --bg-card: #141a27;
+            --bg-card-hover: #192234;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(34, 211, 238, 0.35);
+            --text-heading: #f8fafc;
+            --text-body: #94a3b8;
+            --text-muted: #64748b;
+            --accent-cyan: #22d3ee;
+            --accent-cyan-dim: rgba(34, 211, 238, 0.12);
+            --accent-green: #10b981;
+            --shadow-glow: 0 0 50px -15px rgba(34, 211, 238, 0.25);
+            --shadow-card: 0 16px 36px rgba(0, 0, 0, 0.5);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        
         body {
-            background-color: var(--bg);
+            background-color: var(--bg-deep);
             color: var(--text-body);
-            font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.7;
             padding: 0 24px 80px;
+            -webkit-font-smoothing: antialiased;
+            position: relative;
+            min-height: 100vh;
         }
 
-        .container { max-width: 860px; margin: 0 auto; }
+        /* Ambient Glow Backdrop */
+        .ambient-glow {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(34, 211, 238, 0.1) 0%, rgba(8, 10, 15, 0) 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
 
-        header {
-            padding: 36px 0 24px;
+        .container { 
+            max-width: 860px; 
+            margin: 0 auto; 
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Sticky Floating Dark Pill Navbar */
+        .nav-wrapper {
+            padding: 24px 0 36px;
+            display: flex;
+            justify-content: center;
+            position: sticky;
+            top: 16px;
+            z-index: 100;
+        }
+
+        .nav-pill {
+            background: rgba(15, 20, 30, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 40px;
+            padding: 8px 16px 8px 18px;
             display: flex;
             align-items: center;
+            gap: 24px;
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6);
+            width: 100%;
+            max-width: 720px;
             justify-content: space-between;
-            border-bottom: 1px solid var(--surface-border);
-            margin-bottom: 40px;
         }
 
         .brand {
@@ -48,153 +92,234 @@
             text-decoration: none;
             color: var(--text-heading);
             font-weight: 800;
-            font-size: 18px;
+            font-size: 17px;
+            letter-spacing: -0.3px;
         }
 
         .brand img {
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
 
         .nav-links a {
-            color: var(--text-muted);
+            color: var(--text-body);
             text-decoration: none;
-            margin-left: 20px;
             font-size: 14px;
             font-weight: 600;
             transition: color 0.2s;
         }
 
-        .nav-links a:hover { color: var(--accent-emerald); }
-
-        h1 {
-            font-family: 'Newsreader', Georgia, serif;
-            font-size: 42px;
-            font-weight: 600;
-            color: var(--text-heading);
-            margin-bottom: 8px;
-            letter-spacing: -1px;
+        .nav-links a:hover, .nav-links a.active { 
+            color: var(--accent-cyan); 
         }
 
-        .subtitle {
-            font-size: 16px;
-            color: var(--text-muted);
+        .header-content {
             margin-bottom: 36px;
         }
 
-        .card {
-            background: var(--surface);
-            border: 1px solid var(--surface-border);
-            border-radius: 16px;
-            padding: 24px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.02);
+        .badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent-cyan-dim);
+            border: 1px solid rgba(34, 211, 238, 0.3);
+            color: var(--accent-cyan);
+            font-size: 11.5px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-family: 'Newsreader', Georgia, serif;
+            font-size: clamp(36px, 5vw, 48px);
+            font-weight: 600;
+            color: var(--text-heading);
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+            line-height: 1.15;
+        }
+
+        .subtitle {
+            font-size: 17px;
+            color: var(--text-body);
+            margin-bottom: 32px;
         }
 
         .contact-box {
-            background: #ffffff;
-            border: 1.5px solid var(--accent-emerald);
-            border-radius: 20px;
-            padding: 36px 28px;
+            background: linear-gradient(180deg, #162032 0%, #101623 100%);
+            border: 1px solid var(--border-hover);
+            border-radius: 24px;
+            padding: 40px 32px;
             text-align: center;
             margin-bottom: 48px;
-            box-shadow: 0 10px 30px rgba(5, 150, 105, 0.08);
+            box-shadow: var(--shadow-card), var(--shadow-glow);
+        }
+
+        .contact-box h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-bottom: 10px;
+            letter-spacing: -0.4px;
+        }
+
+        .contact-box p {
+            color: var(--text-body);
+            max-width: 520px;
+            margin: 0 auto 24px;
+            font-size: 15px;
         }
 
         .contact-btn {
-            display: inline-block;
-            background: var(--btn-dark);
-            color: #ffffff;
-            font-weight: 700;
-            font-size: 15px;
-            padding: 13px 26px;
-            border-radius: 25px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent-cyan);
+            color: #080a0f;
             text-decoration: none;
-            margin-top: 16px;
-            transition: transform 0.2s, background-color 0.2s;
+            padding: 13px 28px;
+            border-radius: 14px;
+            font-weight: 800;
+            font-size: 15px;
+            transition: all 0.25s;
+            box-shadow: 0 8px 24px rgba(34, 211, 238, 0.35);
         }
 
         .contact-btn:hover {
+            background: #67e8f9;
             transform: translateY(-2px);
-            background: #1e2634;
+            box-shadow: 0 12px 30px rgba(34, 211, 238, 0.5);
         }
 
-        h2 {
-            font-size: 22px;
-            font-weight: 700;
-            margin: 40px 0 20px;
+        h2.section-title {
+            font-family: 'Newsreader', Georgia, serif;
+            font-size: 30px;
+            font-weight: 600;
             color: var(--text-heading);
+            margin: 48px 0 24px;
+            letter-spacing: -0.5px;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 28px 26px;
+            margin-bottom: 18px;
+            box-shadow: var(--shadow-card);
+            transition: all 0.25s;
+        }
+
+        .faq-item:hover {
+            border-color: var(--border-hover);
+            background: var(--bg-card-hover);
+            transform: translateY(-2px);
         }
 
         .faq-item h3 {
-            font-size: 17px;
+            font-size: 17.5px;
             font-weight: 700;
             color: var(--text-heading);
-            margin-bottom: 6px;
+            margin-bottom: 10px;
+            letter-spacing: -0.2px;
         }
 
         .faq-item p {
             color: var(--text-body);
             font-size: 15px;
+            line-height: 1.65;
+        }
+
+        .faq-item strong {
+            color: #f1f5f9;
         }
 
         footer {
             margin-top: 60px;
-            padding-top: 24px;
-            border-top: 1px solid var(--surface-border);
+            padding-top: 28px;
+            border-top: 1px solid var(--border);
             text-align: center;
-            color: var(--text-muted);
             font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 600px) {
+            .nav-pill { gap: 12px; }
+            .nav-links a { font-size: 13px; }
+            .contact-box { padding: 30px 20px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <a href="../index.html" class="brand">
-                <img src="assets/logo.png" alt="TinniAura Logo">
-                <span>TinniAura</span>
-            </a>
-            <nav class="nav-links">
-                <a href="../index.html">Overview</a>
-                <a href="../privacy/">Privacy</a>
-                <a href="../terms/">Terms</a>
-            </nav>
-        </header>
+    <div class="ambient-glow"></div>
 
-        <h1>Support & Help Center</h1>
-        <p class="subtitle">Have questions or need assistance with your acoustic soundscapes? We're here to help.</p>
+    <div class="container">
+        <!-- Floating Dark Pill Navbar -->
+        <div class="nav-wrapper">
+            <nav class="nav-pill">
+                <a href="../index.html" class="brand">
+                    <img src="../assets/logo.png" alt="TinniAura Logo">
+                    <span>TinniAura</span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">Overview</a>
+                    <a href="../support/" class="active">Support</a>
+                    <a href="../privacy/">Privacy</a>
+                    <a href="../terms/">Terms</a>
+                </div>
+            </nav>
+        </div>
+
+        <div class="header-content">
+            <div class="badge-pill">Help & Customer Service</div>
+            <h1>Support & Help Center</h1>
+            <p class="subtitle">Have questions or need assistance with your acoustic soundscapes? We're here to help.</p>
+        </div>
 
         <div class="contact-box">
-            <h2 style="margin: 0 0 10px; font-size: 24px; color: var(--text-heading);">Need Help or Found an Audio Issue?</h2>
-            <p style="color: var(--text-body); max-width: 500px; margin: 0 auto;">Our audio engineering team answers all inquiries within 24–48 hours.</p>
-            <a href="mailto:edit43_design@icloud.com" class="contact-btn">Email: edit43_design@icloud.com</a>
+            <h2>Need Help or Found an Audio Issue?</h2>
+            <p>Our acoustic engineering team answers all user inquiries promptly within 24–48 hours.</p>
+            <a href="mailto:edit43_design@icloud.com" class="contact-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                Email: edit43_design@icloud.com
+            </a>
         </div>
 
-        <h2 id="faq">Frequently Asked Questions</h2>
+        <h2 class="section-title" id="faq">Frequently Asked Questions</h2>
 
-        <div class="card faq-item">
+        <div class="faq-item">
             <h3>How do I restore my lifetime purchase on a new iPhone or iPad?</h3>
-            <p>Open TinniAura, tap <strong>Settings</strong> (or tap the <strong>PRO</strong> button in the header), and tap <strong>Restore Purchases</strong>. Your purchase will automatically sync with Apple's App Store servers with zero charge.</p>
+            <p>Open TinniAura, tap <strong>Settings</strong> (or tap the <strong>PRO</strong> crown badge in the header), and tap <strong>Restore Purchases</strong>. Your purchase will automatically sync with Apple's App Store servers with zero charge.</p>
         </div>
 
-        <div class="card faq-item">
+        <div class="faq-item">
             <h3>Are there any recurring subscriptions or hidden monthly fees?</h3>
-            <p><strong>No.</strong> TinniAura is strictly Pay Once, Keep Forever. One purchase unlocks all Pro soundscapes, notched filtering, independent dual-ear matching, and future sound updates permanently.</p>
+            <p><strong>No.</strong> TinniAura is strictly Pay Once, Keep Forever ($19.99 Lifetime). One single purchase unlocks all Pro soundscapes, notched filtering, independent dual-ear matching, and future sound updates permanently.</p>
         </div>
 
-        <div class="card faq-item">
+        <div class="faq-item">
             <h3>Does acoustic masking play while my screen is locked or in the background?</h3>
             <p>Yes! TinniAura integrates with iOS background audio and the Lock Screen Now Playing center. You can close the app or lock your iPhone, and your sleep timer will continue to fade out smoothly.</p>
         </div>
 
-        <div class="card faq-item">
+        <div class="faq-item">
             <h3>How do I safely match my ringing pitch with the shuttle wheel?</h3>
             <p>Put on wired or Bluetooth headphones in a quiet room. Select the Sine tone, gently rotate the Spring Shuttle Wheel until the pitch matches the center pitch of your ear ringing, and adjust volume so the tone sits at or slightly below your tinnitus level.</p>
         </div>
 
-        <div class="card faq-item">
+        <div class="faq-item">
             <h3>How does Apple HealthKit integration work?</h3>
             <p>TinniAura can import hearing threshold levels from clinical audiograms stored in Apple Health to apply Equal Loudness calibration, keeping high frequencies smooth and soothing.</p>
         </div>
